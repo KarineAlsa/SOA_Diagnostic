@@ -1,8 +1,6 @@
 import  express  from "express";
 import {  registerController, listAllController} from "../Dependencies";
 
-
-
 const tutorRouter = express.Router();
 
 
