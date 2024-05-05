@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Students (
     name VARCHAR(100) NOT NULL,
     lastName VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    tutor INT NOT NULL,
+    tutor INT,
     PRIMARY KEY (id),
     UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE,
     UNIQUE INDEX registration_number_UNIQUE (registration_number ASC) VISIBLE,

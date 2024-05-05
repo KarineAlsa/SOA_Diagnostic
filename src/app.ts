@@ -4,12 +4,14 @@ import path from 'path';
 import { exec } from 'child_process';
 import tutorRouter from "./TutorManagement/Infrastructure/Route/TutorRouter";
 import subjectRouter from "./SubjectManagement/Infrastructure/Route/SubjectRouter";
+import studentRouter from "./StudentManagement/Infrastructure/Route/StudentRouter";
 dotenv.config()
 const server = express();
 const server_port =process.env.PORT;
 server.use(express.json());
 server.use('/api/v1/tutors', tutorRouter);
 server.use('/api/v1/subjects', subjectRouter);
+server.use('/api/v1/students', studentRouter);
 
 
 server.listen(process.env.PORT, () => {
