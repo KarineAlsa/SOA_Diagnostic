@@ -4,6 +4,21 @@ import query from "../../../Database/mysql";
 
 
 export default class TutorMysqlRepository implements TutorInterface {
+  async addAlumnTutor(tutor:number,alumn: number) {
+    let updateQuery = "UPDATE Students SET tutor = ? where id = ?";
+    const params: any[] = [tutor,alumn];
+    try {
+      const [result]: any = await query(updateQuery, params);
+
+      if (result && result.affectedRows > 0) {
+        return true
+      } else {
+        throw new Error("No se pudo actualizar el usuario");
+      }
+    } catch (error) {
+      throw new Error(`Error en la operación de actualización`);
+    }
+  }
   async listStudents(tutor: number): Promise<any> {
     const sql = "SELECT * FROM Students WHERE tutor = ?";
     const params: any[] = [tutor];
