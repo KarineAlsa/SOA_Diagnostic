@@ -4,24 +4,7 @@ import query from "../../../Database/mysql";
 
 
 export default class StudentMysqlRepository implements StudentInterface {
-  async listByTutor(tutor: number): Promise<any> {
-    const sql = "SELECT * FROM Students WHERE tutor = ?";
-    const params: any[] = [tutor];
-    try {
-      const [result]: any = await query(sql, params);
-      
-      if (result){
-        return result;
-      }
-      
-      else {
-        false
-      }
-    }
-    catch (error) {
-      false
-    }
-  }
+
   async listAll(): Promise<any> {
     const sql = "SELECT * FROM Students";
     const params: any[] = [];

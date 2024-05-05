@@ -4,6 +4,24 @@ import query from "../../../Database/mysql";
 
 
 export default class TutorMysqlRepository implements TutorInterface {
+  async listStudents(tutor: number): Promise<any> {
+    const sql = "SELECT * FROM Students WHERE tutor = ?";
+    const params: any[] = [tutor];
+    try {
+      const [result]: any = await query(sql, params);
+      
+      if (result){
+        return result;
+      }
+      
+      else {
+        false
+      }
+    }
+    catch (error) {
+      false
+    }
+  }
   async registerTutor(tutor: Tutor): Promise<any> {
     const sql = "INSERT INTO Tutors (name, lastName,email,cellphone) VALUES (?,?,?,?)";
     const params: any[] = [tutor.name, tutor.lastName,tutor.email,tutor.cellphone];

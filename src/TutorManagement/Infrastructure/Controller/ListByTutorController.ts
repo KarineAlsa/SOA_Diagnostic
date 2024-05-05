@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import  ListAllByTutorUseCase  from "../../Application/UseCase/ListStudentsByTutorIdUseCase";
+import  ListAllByTutorUseCase  from "../../Application/UseCase/ListStudentsbyTutorUseCase";
 
 
-export default class RegisterController {
+export default class ListStudentController {
 
     constructor(readonly useCase:ListAllByTutorUseCase){}
 
@@ -19,11 +19,11 @@ export default class RegisterController {
             
             let students = await this.useCase.run(Number(tutor));
             if (students) {
-                return response.status(200).json({data:students,message:"Estudiantes por tutor obtenidos",success:true});
+                return response.status(200).json({data:students,message:"Estudiantes del tutor obtenidos",success:true});
             } else {
                 response.status(400).send({
                     
-                    message: "No se pudo obtener los estudiantes por tutor",
+                    message: "No se pudo obtener los estudiantes del tutor",
                     success: false,
                 });
             }
