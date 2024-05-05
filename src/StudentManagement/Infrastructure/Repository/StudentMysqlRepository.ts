@@ -4,6 +4,23 @@ import query from "../../../Database/mysql";
 
 
 export default class StudentMysqlRepository implements StudentInterface {
+  async listAll(): Promise<any> {
+    const sql = "SELECT * FROM Students";
+    const params: any[] = [];
+    try {
+      const [result]: any = await query(sql, params);
+      
+      if (result){
+        return result
+      }
+      else {
+        return false;
+      }
+    }
+    catch (error) {
+      return false;
+    }
+  }
   async registerStudent(student: Student): Promise<any> {
     const sql = "INSERT INTO Students (name, registration_number, lastName, email, tutor) VALUES (?,?,?,?,?)";
     const params: any[] = [student.name, student.registration_number, student.lastName, student.email, student.tutor];
