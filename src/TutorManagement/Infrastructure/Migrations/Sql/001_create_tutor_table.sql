@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Tutors (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    lastName VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    cellphone VARCHAR(45) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE,
+    UNIQUE INDEX cellphone_UNIQUE (cellphone ASC) VISIBLE);
